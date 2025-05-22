@@ -14,7 +14,7 @@ def fetch_live_sessions(cookies):
         "orderBy": "",
         "sort": "",
         "timeDim": "30d",
-        "endDate": 2025-05-22
+        "endDate": "2025-05-22"
     }
     headers = {
         "accept": "application/json",
