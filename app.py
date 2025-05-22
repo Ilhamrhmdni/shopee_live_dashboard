@@ -54,7 +54,7 @@ def fetch_live_sessions(cookies):
 def fetch_dashboard_data(cookies, session_id):
     # Bangun URL secara manual
     api_url = (
-        f"https://creator.shopee.co.id/supply/api/lm/sellercenter/realtime/dashboard/overview? "
+        f"https://creator.shopee.co.id/supply/api/lm/sellercenter/realtime/dashboard/overview?"
         f"sessionId={session_id}"
     )
     
