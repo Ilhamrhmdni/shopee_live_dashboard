@@ -39,8 +39,10 @@ def fetch_live_sessions(cookies):
 
     try:
         response = requests.get(api_url, params=params, headers=headers, cookies=cookies)
+        print("Request URL:", response.url)  # Debugging: Cetak URL lengkap
         response.raise_for_status()  # Memastikan tidak ada error HTTP
         data = response.json()
+        print("Response Data:", data)  # Debugging: Cetak respons JSON
         if data.get("code") == 0:  # Cek apakah respons sukses
             return data["data"]["list"]
         else:
@@ -52,7 +54,7 @@ def fetch_live_sessions(cookies):
 
 # Fungsi untuk mengambil data dari API realtime/dashboard/overview
 def fetch_dashboard_data(cookies, session_id):
-    api_url = f"https://creator.shopee.co.id/supply/api/lm/sellercenter/realtime/dashboard/overview "
+    api_url = "https://creator.shopee.co.id/supply/api/lm/sellercenter/realtime/dashboard/overview "
     params = {
         "sessionId": session_id
     }
@@ -78,8 +80,10 @@ def fetch_dashboard_data(cookies, session_id):
 
     try:
         response = requests.get(api_url, params=params, headers=headers, cookies=cookies)
+        print("Request URL:", response.url)  # Debugging: Cetak URL lengkap
         response.raise_for_status()  # Memastikan tidak ada error HTTP
         data = response.json()
+        print("Response Data:", data)  # Debugging: Cetak respons JSON
         if data.get("code") == 0:  # Cek apakah respons sukses
             return data["data"]
         else:
