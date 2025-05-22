@@ -11,7 +11,7 @@ def fetch_live_sessions(cookies):
     
     # Bangun URL secara manual
     api_url = (
-        f"https://creator.shopee.co.id/supply/api/lm/sellercenter/liveList/v2? "
+        f"https://creator.shopee.co.id/supply/api/lm/sellercenter/liveList/v2?"
         f"page=1&pageSize=1000&name=&orderBy=&sort=&timeDim=30d&endDate={end_date}"
     )
     
