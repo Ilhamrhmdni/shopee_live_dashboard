@@ -6,16 +6,15 @@ from datetime import datetime
 
 # Fungsi untuk mengambil data dari API liveList/v2
 def fetch_live_sessions(cookies):
-    api_url = "https://creator.shopee.co.id/supply/api/lm/sellercenter/liveList/v2 "
-    params = {
-        "page": 1,
-        "pageSize": 1000,
-        "name": "",
-        "orderBy": "",
-        "sort": "",
-        "timeDim": "30d",
-        "endDate": "2025-05-22"
-    }
+    # Generate endDate dengan tanggal terbaru
+    end_date = datetime.now().strftime("%Y-%m-%d")
+    
+    # Bangun URL secara manual
+    api_url = (
+        f"https://creator.shopee.co.id/supply/api/lm/sellercenter/liveList/v2? "
+        f"page=1&pageSize=1000&name=&orderBy=&sort=&timeDim=30d&endDate={end_date}"
+    )
+    
     headers = {
         "accept": "application/json",
         "accept-encoding": "gzip, deflate, br, zstd",
@@ -37,7 +36,7 @@ def fetch_live_sessions(cookies):
     }
 
     try:
-        response = requests.get(api_url, params=params, headers=headers, cookies=cookies)
+        response = requests.get(api_url, headers=headers, cookies=cookies)
         print("Request URL:", response.url)  # Debugging: Cetak URL lengkap
         response.raise_for_status()  # Memastikan tidak ada error HTTP
         data = response.json()
@@ -53,10 +52,12 @@ def fetch_live_sessions(cookies):
 
 # Fungsi untuk mengambil data dari API realtime/dashboard/overview
 def fetch_dashboard_data(cookies, session_id):
-    api_url = "https://creator.shopee.co.id/supply/api/lm/sellercenter/realtime/dashboard/overview "
-    params = {
-        "sessionId": session_id
-    }
+    # Bangun URL secara manual
+    api_url = (
+        f"https://creator.shopee.co.id/supply/api/lm/sellercenter/realtime/dashboard/overview? "
+        f"sessionId={session_id}"
+    )
+    
     headers = {
         "accept": "application/json",
         "accept-encoding": "gzip, deflate, br, zstd",
@@ -78,7 +79,7 @@ def fetch_dashboard_data(cookies, session_id):
     }
 
     try:
-        response = requests.get(api_url, params=params, headers=headers, cookies=cookies)
+        response = requests.get(api_url, headers=headers, cookies=cookies)
         print("Request URL:", response.url)  # Debugging: Cetak URL lengkap
         response.raise_for_status()  # Memastikan tidak ada error HTTP
         data = response.json()
