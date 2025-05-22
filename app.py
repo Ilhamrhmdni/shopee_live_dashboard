@@ -6,7 +6,6 @@ from datetime import datetime
 
 # Fungsi untuk mengambil data dari API liveList/v2
 def fetch_live_sessions(cookies):
-    end_date = datetime.now().strftime("%Y-%m-%d")  # Generate endDate dengan tanggal terbaru
     api_url = "https://creator.shopee.co.id/supply/api/lm/sellercenter/liveList/v2 "
     params = {
         "page": 1,
@@ -15,7 +14,7 @@ def fetch_live_sessions(cookies):
         "orderBy": "",
         "sort": "",
         "timeDim": "30d",
-        "endDate": end_date
+        "endDate": 2025-05-22
     }
     headers = {
         "accept": "application/json",
